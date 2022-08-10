@@ -1,0 +1,29 @@
+<br>
+<h3>Server List</h3>
+
+<table class="table">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Server</th>
+      <th scope="col">Status</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Remove</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let server of servers">
+      <th>{{ server.id }}</th>
+      <td>{{ server.name }}</td>
+      <td>
+        {{ server.status }}
+      </td>
+      <td>
+        <button class="btn btn-primary" (click)="onEditServer()"><i class="bi bi-pencil-square"></i></button>
+      </td>
+      <td>
+        <button class="btn btn-danger" (click)="onRemoveServer()"><i class="bi bi-trash"></i></button>
+      </td>
+    </tr>
+  </tbody>
+</table>

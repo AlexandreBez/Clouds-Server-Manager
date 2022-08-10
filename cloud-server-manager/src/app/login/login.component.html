@@ -1,0 +1,42 @@
+<div *ngIf="alert" class="alert alert-danger" id="errorAlert" role="alert">
+  Email and/or password incorrect!
+</div>
+
+<div class="container loginArea">
+
+  <div class="row row-cols-2 loginComponents">
+
+    <div class="col">
+      <img src="assets/undraw_reminder_re_hn9x.svg" class="undrawImg" alt="undraw" width="280" height="280">
+    </div>
+
+    <form class="col form needs-validation">
+
+      <div class="mb-3">
+        <img src="../../assets/CloudWish.png" class="logoImg" alt="logo" width="120" height="120">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">
+          <i class="bi bi-person-badge"></i>
+          Email
+        </label>
+        <input type="email" class="form-control" id="inputEmail" placeholder="example@example.com" required #email>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">
+          <i class="bi bi-file-lock"></i>
+          Password
+        </label>
+        <input type="password" class="form-control" id="inputPassword" placeholder="**********" required #password>
+
+      </div>
+
+      <button class="btn btn-dark" id="loginButton" (click)="onClickLogin(email.value, password.value)">Login</button>
+
+    </form>
+
+  </div>
+
+</div>

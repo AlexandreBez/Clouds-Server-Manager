@@ -1,0 +1,25 @@
+.navbar{
+    height: 15%;
+    margin-bottom: 5%;
+}
+
+img{
+    margin-left: 3%;
+    margin-right: 2%;
+    border-radius: 10%;
+}
+
+.navbar-nav{
+    margin-left: 60%;
+}
+
+.nav-item{
+    margin-left: 2%;
+}
+
+.container{
+    width: 50%;
+    height: 60%;
+    background-color: white;
+    border-radius: 15px;
+}
