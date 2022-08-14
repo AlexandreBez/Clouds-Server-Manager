@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ServerService } from './servers.service';
+import { ServersService } from './servers.service';
 
 @Component({
   selector: 'app-servers',
@@ -9,22 +9,48 @@ import { ServerService } from './servers.service';
 })
 export class ServersComponent implements OnInit {
 
-  public servers: {id: number, name: string, status: string}[] = [];
+  public servers = this.serversService.getServers();
+  confirmDelete!: boolean;
+  showDeletePanel: boolean = false;
+  success: boolean = false;
 
   constructor(
-    private serverService: ServerService,
+    private serversService: ServersService,
     private router: Router
   ) { }
 
   ngOnInit() {
-    this.servers = this.serverService.getservers();
   }
 
-  onEditServer(){
-    this.router.navigate(['editServer']);
+  onCreateServer(){
+    this.router.navigate(['/servers/create-server']);
   }
 
   onRemoveServer(){
-    this.serverService.removeServer();
+    this.serversService.deleteServer();
+    this.showDeletePanel = false;
+
+    setTimeout(
+      () => {
+        this.success = true;
+
+        setTimeout(
+          () => {
+            this.success = false;
+          }, 4000
+        )
+
+      }, 10
+    );
   }
+
+  onRemoveConfirm(){
+    this.showDeletePanel = true;
+  }
+
+  onCancel(){
+    this.showDeletePanel = false;
+  }
+
+
 }

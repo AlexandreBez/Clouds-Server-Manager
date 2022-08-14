@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { EditUserComponent } from './users/edit-user/edit-user.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { EditServerComponent } from './servers/edit-server/edit-server.component';
 import { ServersComponent } from './servers/servers.component';
+import { CreateServerComponent } from './servers/create-server/create-server.component';
 import { UsersComponent } from './users/users.component';
-import { ErrorPageComponent } from './error-page/error-page.component';
+import { CreateUserComponent } from './users/create-user/create-user.component';
 
 const routes: Routes = [
 
@@ -22,35 +21,24 @@ const routes: Routes = [
 
   {
     path: 'servers',
-    component: ServersComponent
-  },
-
-  {
-    path: 'editServer',
-    component: EditServerComponent
+    component: ServersComponent,
+    children: [
+      {
+        path: 'create-server',
+        component: CreateServerComponent
+      }
+    ]
   },
 
   {
     path: 'users',
-    component: UsersComponent
-  },
-
-  {
-    path: 'editUser',
-    component: EditUserComponent
-  },
-
-  { 
-    path: 'notFound', 
-    component: ErrorPageComponent,
-    data: {
-      message: 'Page not found!'
-    }
-  },
-
-  { 
-    path: '**', 
-    redirectTo: '/not-found' 
+    component: UsersComponent,
+    children: [
+      {
+        path: 'create-user',
+        component: CreateUserComponent
+      }
+    ]
   }
   
 ];

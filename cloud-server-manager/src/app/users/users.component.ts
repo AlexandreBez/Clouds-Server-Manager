@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UsersService } from './users.service';
+import { UsersService } from './user.service';
 
 @Component({
   selector: 'app-users',
@@ -9,21 +9,46 @@ import { UsersService } from './users.service';
 })
 export class UsersComponent implements OnInit {
 
-  public users: {id: number, name: string, role: string}[] = [];
+  public users = this.usersService.getUsers();
+  confirmDelete!: boolean;
+  showDeletePanel: boolean = false;
+  success: boolean = false;
 
   constructor(
-    private userService: UsersService,
+    private usersService: UsersService,
     private router: Router
   ) { }
 
-  ngOnInit(){
+  ngOnInit() {
   }
 
-  onEditUser(){
-    this.router.navigate(['editUser']);
+  onCreateUser(){
+    this.router.navigate(['/users/create-user']);
   }
 
-  onRemoveServer(){
-    this.userService.removeUser();
+  onRemoveUser(){
+    this.usersService.deleteUser();
+    this.showDeletePanel = false;
+
+    setTimeout(
+      () => {
+        this.success = true;
+
+        setTimeout(
+          () => {
+            this.success = false;
+          }, 4000
+        )
+
+      }, 10
+    );
+  }
+
+  onRemoveConfirm(){
+    this.showDeletePanel = true;
+  }
+
+  onCancel(){
+    this.showDeletePanel = false;
   }
 }

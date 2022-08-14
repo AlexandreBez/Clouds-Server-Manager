@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -28,12 +29,14 @@ export class LoginComponent{
   }
 
   constructor(
-    private router: Router
+    private router: Router,
+    private token: AuthService
   ) {}
 
   onClickLogin(email: string, password: string){
     if(email === 'teste' && password === '123'){
       this.router.navigate(["/"]);
+      this.token.token = true;
     }else{
       this.alertTimeout();
     };

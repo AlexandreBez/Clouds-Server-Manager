@@ -5,24 +5,26 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ServersComponent } from './servers/servers.component';
-import { EditServerComponent } from './servers/edit-server/edit-server.component';
-import { UsersComponent } from './users/users.component';
 import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
-import { ErrorPageComponent } from './error-page/error-page.component';
-import { EditUserComponent } from './users/edit-user/edit-user.component';
+import { CreateServerComponent } from './servers/create-server/create-server.component';
+import { ServersService } from './servers/servers.service';
+import { UsersComponent } from './users/users.component';
+import { CreateUserComponent } from './users/create-user/create-user.component';
+import { UsersService } from './users/user.service';
+import { ListListenerDirective } from './shared/list-listener.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ServersComponent,
-    EditServerComponent,
-    UsersComponent,
     LoginComponent,
-    ErrorPageComponent,
-    EditUserComponent
+    CreateServerComponent,
+    UsersComponent,
+    CreateUserComponent,
+    ListListenerDirective
   ],
   imports: [
     BrowserModule,
@@ -30,7 +32,7 @@ import { EditUserComponent } from './users/edit-user/edit-user.component';
     BrowserAnimationsModule,
     FormsModule
   ],
-  providers: [],
+  providers: [ServersService, UsersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

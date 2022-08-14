@@ -1,0 +1,41 @@
+<div class="modalAux">
+
+  <form class="row loginComponents">
+    <div class="mb-2">
+      <label class="form-label">
+        <i class="bi bi-server"></i>
+        Server Name
+      </label>
+      <input type="email" class="form-control" id="inputEmail" placeholder="server name....." required #serverName>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">
+        <i class="bi bi-list-task"></i>
+        Status
+      </label>
+      <select class="form-select" aria-label="Default select example" #serverStatus>
+        <option value="Online">Online</option>
+        <option value="Offline">Offline</option>
+        <option value="Unknow">Unknow</option>
+      </select>
+    </div>
+
+    <div class="col" id="createBtnArea">
+      <button class="btn btn-success" id="createServer" (click)="onCreateServer(serverName.value, serverStatus.value)">
+        <i class="bi bi-cloud-plus"></i>
+        Create
+      </button>
+    </div>
+
+    <div class="col">
+      <button class="btn btn-danger" id="cancelServer" (click)="onCancelServerCreation()">
+        <i class="bi bi-x-square"></i>
+        Cancel
+      </button>
+    </div>
+
+  </form>
+</div>
+<div class="overlay">
+</div>

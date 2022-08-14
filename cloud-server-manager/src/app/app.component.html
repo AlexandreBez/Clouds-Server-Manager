@@ -3,7 +3,7 @@
     <div class="container-fluid">
 
         <img src="assets/CloudWish.png" width="70" height="70" alt="logo">
-        <a class="navbar-brand" href="#">Clouds Server Manager</a>
+        <a class="navbar-brand">Clouds Server Manager</a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -12,31 +12,31 @@
 
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
 
-            <ul class="navbar-nav">
+            <ul class="navbar-nav" *ngIf="isLogged()">
 
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active">
+                    <a class="nav-link" id="homeLink" routerLink="/" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active">
                         <i class="bi bi-house"></i>
                         Home
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/servers" routerLinkActive="active">
+                    <a class="nav-link" id="serversLink" routerLink="/servers" routerLinkActive="active">
                         <i class="bi bi-hdd-stack"></i>
                         Servers
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['/users']" routerLinkActive="active">
+                    <a class="nav-link" id="userslink" [routerLink]="['/users']" routerLinkActive="active">
                         <i class="bi bi-person"></i>
                         Users
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <Button (click)="onlogout()" class="btn btn-primary">
+                    <Button (click)="onlogout()" id="logoutBtn" class="btn btn-primary">
                         <i class="bi bi-box-arrow-left"></i>
                         Logout
                     </Button>

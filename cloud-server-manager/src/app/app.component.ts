@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from './auth.service';
 
 @Component({
   selector: 'app-root',
@@ -9,13 +10,24 @@ import { Router } from '@angular/router';
 export class AppComponent {
 
   constructor(
-    private router: Router
+    private router: Router,
+    private auth: AuthService
   ) { }
 
-  ngOnInit(): void {
+  isValidated!: boolean;
+
+  ngOnInit() {
+    this.auth.validateToken();
   }
 
   onlogout(){
     this.router.navigate(["/login"]);
+    this.auth.token = false;
   }
+
+  isLogged(){
+    this.isValidated = this.auth.token;
+    return this.isValidated;
+  }
+
 }
